@@ -1,0 +1,64 @@
+#/etc/rc.local
+#--------------------------
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+#exec python /usr/alert_1.py &
+exec ngrok tcp 22 &
+
+exit 0
+
+-----------------------------------------------------------------------------
+
+
+#/etc/systemd/system/remote.service
+#--------------------------------------
+[Unit]
+Description=My Script Service
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Restart=on-failure
+RestartSec=20s
+Type=simple
+ExecStartPre=/usr/bin/sh -c 'until ping -c1 8.8.8.8; do sleep 1; done;'
+ExecStart=/usr/bin/python /usr/remote.py
+WorkingDirectory=/usr
+User=root
+
+[Install]
+WantedBy=multi-user.target
+#---------------------------------------------------------------------------
+
+#/etc/systemd/system/alert.service
+#--------------------------------------
+[Unit]
+Description=My Script Service
+After=network-online.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Restart=on-failure
+RestartSec=20s
+Type=simple
+ExecStartPre=/usr/bin/sh -c 'until ping -c1 8.8.8.8; do sleep 1; done;'
+ExecStart=/usr/bin/python /usr/alert_1.py
+WorkingDirectory=/usr
+User=root
+
+[Install]
+WantedBy=multi-user.target
+#---------------------------------------------------------------------------
+
