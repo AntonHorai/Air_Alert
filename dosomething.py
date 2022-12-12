@@ -11,7 +11,7 @@ def action(num):
 	GPIO.setmode(GPIO.BOARD)
 	GPIO.setwarnings(False)
 
-	mic = <some pin>		#Vellez "MIC" button simulation
+	mic = <some pin>	#Vellez "MIC" button simulation
 	siren_on = <some pin>	#siren ON relay
 	siren_off = <some pin>	#siren OFF relay
 	outs = [mic, siren_on, siren_off]
