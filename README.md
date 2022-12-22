@@ -7,7 +7,8 @@ Also, there is a Telegram bot, that allows users to manually turn siren on and o
 - alert_1.py (main script);
 - AL_main.mp3 and OK.mp3 (alert and OK messages);
 - remote.py (Telegram bot main file);
-- dosomething.py (actions, called from remote.py).
+- dosomething.py (actions, called from remote.py);
+- users.txt (authorized users and their Telegram ID's).
 # Other files:
 - IO.jpg (typical GPIO-to-24DCV relay connection);
 - Morning.mp3 (Notice before alarm system test);
