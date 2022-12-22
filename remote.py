@@ -1,11 +1,23 @@
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher import filters
+import re
 import dosomething
 
+#configure bot
 API_TOKEN = '...' # Telegram bot token
-users = ['...','...'] #Telegram @userinfobot to see an ID
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
+
+#read authorized users list
+with open('/usr/users.txt') as f: 
+    lines = f.readlines()
+    users = []
+for line in lines:
+    line = re.sub(r'[^0-9]+',"", line)
+    if len(line) >= 9:      #to drop strings with no ID
+        line = line[-9:]    #to drop digits from names
+        users.append(line)
+
 #interface
 @dp.message_handler(filters.IDFilter(user_id=users), commands=['start'])
 async def send_welcome(message: types.Message):
