@@ -20,10 +20,10 @@ def action(num):
 
 	if num == 1:
 		print('Action -', num)
-		playSound(mic, test_msg),
+		playSound(mic, AL_msg),
 	elif num == 2:
 		print('Action -', num)
-		playSound(mic, test_msg)
+		playSound(mic, OK_msg)
 	elif num == 3:
 		print(num, 'Siren ON')
 		GPIO.output(siren_on, 1)

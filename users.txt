@@ -1,0 +1,4 @@
+*Telegram ID has to contain 9 digits
+@userinfobot to see an ID
+User_1 - 111111111
+User_2 - 222222222
