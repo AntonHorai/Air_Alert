@@ -37,19 +37,19 @@ async def send_welcome(message: types.Message):
    await message.reply("pong")
 
 #actions
-@dp.message_handler(commands=['Тривога!'])
+@dp.message_handler(filters.IDFilter(user_id=users), commands=['Тривога!'])
 async def dosome(arg):
    print('Alert_START')
    dosomething.action(1)
-@dp.message_handler(commands=['Відбій'])
+@dp.message_handler(filters.IDFilter(user_id=users), commands=['Відбій'])
 async def dosome(arg):
    print('Alert_STOP')
    dosomething.action(2)
-@dp.message_handler(commands=['Сирена_ON'])
+@dp.message_handler(filters.IDFilter(user_id=users), commands=['Сирена_ON'])
 async def dosome(arg):
    print('Siren_ON')
    dosomething.action(3)
-@dp.message_handler(commands=['Сирена_OFF'])
+@dp.message_handler(filters.IDFilter(user_id=users), commands=['Сирена_OFF'])
 async def dosome(arg):
    print('Siren_OFF')
    dosomething.action(4)
