@@ -1,6 +1,7 @@
 import os
 import time
 import json
+from datetime import datetime
 import requests
 import OPi.GPIO as GPIO
 
@@ -9,7 +10,7 @@ def main():
 	token = "..." #https://api.ukrainealarm.com/
 	AL_msg = "/usr/AL_main.mp3"
 	OK_msg = "/usr/OK.mp3"
-	test_msg = "/usr/test.mp3"
+	test_msg = "/usr/morningTest50.mp3"
 
 	#GPIO settings
 	GPIO.setmode(GPIO.BOARD)
@@ -26,6 +27,13 @@ def main():
 		time.sleep(5)		#
 		click(green_led)	#
 		time.sleep(4)		#Green LED blinks to indicate RUN
+		
+		#if time for everyday test
+		now = datetime.now()
+		timeNow = now.strftime("%H:%M")
+		if timeNow == '08:00':
+			playSound(mic, test_msg)
+			time.sleep(60)		#wait for 1 minute
 		
 		#ask if alert
 		try:
