@@ -66,7 +66,7 @@ def main():
 
 def playSound(pin, message):
 	click(pin)			#"MIC" button ON
-	time.sleep(4)
+	time.sleep(4)			#amplifier needs time to start
 	os.system("mpg123 " + message)	#playing sound using native player
 	time.sleep(1)
 	click(pin)			#"MIC" button OFF
