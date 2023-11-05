@@ -2,6 +2,7 @@
 Project for Orange Pi Zero (Raspberry Pi) running Armbian, that integrates "Vellez ПМН-8"(fire alarm system) extension pult with "Air Alert" app from Stfalcon.
 When PI recives alert from "Air Alert", it simulates pressing of the corresponding button on the pult, that turns amplifiers on, and plays the message. Then, outer siren turns on for 1 min. 
 Another message is played when alert ends.
+Every morning speaker-system is tested by playing small music track.
 Also, there is a Telegram bot, that allows users to manually turn siren on and off and play messages through plants alarm system speakers.
 # Necessary files are:
 - alert_1.py (main script);
@@ -9,6 +10,7 @@ Also, there is a Telegram bot, that allows users to manually turn siren on and o
 - remote.py (Telegram bot main file);
 - dosomething.py (actions, called from remote.py);
 - users.txt (authorized users and their Telegram ID's).
+- morningTest50.mp3 (music for everyday system testing).
 # Other files:
 - IO.jpg (typical GPIO-to-24DCV relay connection);
 - Morning.mp3 (Notice before alarm system test);
